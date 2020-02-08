@@ -35,7 +35,7 @@
       <h3 class="widget-title">文章目录</h3>
       <div class="toc">
         <ul>
-          {{ post.toc|safe }}
+          {{ post.toc|safe }}<!--通过实例化markdown为一个md,将detail视图函数中的post结果动态增加一个.toc属性,然后将md的toc属性(目录html代码赋值给它)-->
         </ul>
       </div>
     </div>
