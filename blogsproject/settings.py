@@ -25,7 +25,7 @@ SECRET_KEY = '1h+u+j0p+bopp2a9&=b4(r6+6f3s=1$av3)oz%)ko@*w7j5l^-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost ', '.zmrenwu.com']
 
 
 # Application definition
@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog.apps.BlogConfig',#博客应用
+    'blog.apps.BlogConfig',#博客应用(此配置包含了blog)
     'comments.apps.CommentsConfig',#评论
 ]
 
@@ -119,5 +119,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = '/static/'#templates下的app.html找对应app下的static
-
+STATIC_URL = '/static/'#templates根目录下有base.html,
+# base.html在{% load static %}后根据STATIC_URL指定的路径去每个app下找static/../.css文件.
+#其他html如果复用base的话{% extands 'base.html' %}
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')#静态文件收集路径,根目录下的static文件夹
